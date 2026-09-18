@@ -4,5 +4,5 @@ export interface RendezVous {
   heure: string;
   patientId: string;
   medecinId: string;
-  etat: 'en attente' | 'confirmé' | 'annulé';
+  etat: string;
 }
