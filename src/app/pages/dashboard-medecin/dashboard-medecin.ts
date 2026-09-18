@@ -17,21 +17,18 @@ interface RendezVousAffichage extends RendezVous {
 export class DashboardMedecin implements OnInit {
   private rendezvousService = inject(RendezvousService);
   private patientService = inject(PatientService);
-  // signal() au lieu d'une simple propriété : le projet n'utilise pas zone.js,
-  // donc sans signal la vue ne se met pas à jour quand les données arrivent de manière asynchrone (subscribe).
+
   rendezvous = signal<RendezVousAffichage[]>([]);
 
   ngOnInit() {
-    const medecinId = localStorage.getItem('id');
-    this.rendezvousService.getAll().subscribe((rendezvous) => {
+    const medecinId = localStorage.getItem('id')!;
+    this.rendezvousService.getByMedecinId(medecinId).subscribe((rendezvous) => {
       this.patientService.getAll().subscribe((patients) => {
         this.rendezvous.set(
-          rendezvous
-            .filter((rdv) => rdv.medecinId === medecinId)
-            .map((rdv) => ({
-              ...rdv,
-              patientNom: patients.find((p) => p.id === rdv.patientId)?.nom ?? 'Inconnu'
-            }))
+          rendezvous.map((rdv) => ({
+            ...rdv,
+            patientNom: patients.find((p) => p.id === rdv.patientId)?.nom ?? 'Inconnu'
+          }))
         );
       });
     });
