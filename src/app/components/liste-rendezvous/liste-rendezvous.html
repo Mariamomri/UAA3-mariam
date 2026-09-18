@@ -1,1 +1,64 @@
-<p>liste-rendezvous works!</p>
+<div class="gestion">
+  <h2>Gestion des Rendez-vous</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="date">Date :</label>
+      <input id="date" type="date" formControlName="date" />
+    </div>
+    <div>
+      <label for="heure">Heure :</label>
+      <input id="heure" type="time" formControlName="heure" />
+    </div>
+    <div>
+      <label for="patientId">Patient :</label>
+      <select id="patientId" formControlName="patientId">
+        <option value="">-- Choisir --</option>
+        @for (patient of patients; track patient.id) {
+          <option [value]="patient.id">{{ patient.nom }}</option>
+        }
+      </select>
+    </div>
+    <div>
+      <label for="medecinId">Médecin :</label>
+      <select id="medecinId" formControlName="medecinId">
+        <option value="">-- Choisir --</option>
+        @for (medecin of medecins; track medecin.id) {
+          <option [value]="medecin.id">{{ medecin.nom }}</option>
+        }
+      </select>
+    </div>
+    <div>
+      <label for="etat">État :</label>
+      <input id="etat" type="text" formControlName="etat" />
+    </div>
+    <button type="submit">{{ idEnModification ? 'Modifier' : 'Ajouter' }}</button>
+    @if (idEnModification) {
+      <button type="button" (click)="annuler()">Annuler</button>
+    }
+  </form>
+
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Heure</th>
+      <th>Patient</th>
+      <th>Médecin</th>
+      <th>État</th>
+      <th>Actions</th>
+    </tr>
+    @for (rdv of rendezvous(); track rdv.id) {
+      <tr>
+        <td>{{ rdv.date + 'T' + rdv.heure | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ rdv.date + 'T' + rdv.heure | date: 'HH:mm' }}</td>
+        <td>{{ rdv.patientNom }}</td>
+        <td>{{ rdv.medecinNom }}</td>
+        <td>{{ rdv.etat }}</td>
+        <td>
+          <button (click)="modifier(rdv)">Modifier</button>
+          <button (click)="supprimer(rdv.id!)">Supprimer</button>
+        </td>
+      </tr>
+    }
+  </table>
+</div>

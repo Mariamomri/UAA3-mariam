@@ -1,1 +1,46 @@
-<p>gestion-patients works!</p>
+<div class="gestion">
+  <h2>Gestion des Patients</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="nom">Nom :</label>
+      <input id="nom" type="text" formControlName="nom" />
+    </div>
+    <div>
+      <label for="email">Email :</label>
+      <input id="email" type="email" formControlName="email" />
+    </div>
+    <div>
+      <label for="password">Mot de passe :</label>
+      <input id="password" type="text" formControlName="password" />
+    </div>
+    <div>
+      <label for="telephone">Téléphone :</label>
+      <input id="telephone" type="text" formControlName="telephone" />
+    </div>
+    <button type="submit">{{ idEnModification ? 'Modifier' : 'Ajouter' }}</button>
+    @if (idEnModification) {
+      <button type="button" (click)="annuler()">Annuler</button>
+    }
+  </form>
+
+  <table>
+    <tr>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>Téléphone</th>
+      <th>Actions</th>
+    </tr>
+    @for (patient of patients(); track patient.id) {
+      <tr>
+        <td>{{ patient.nom }}</td>
+        <td>{{ patient.email }}</td>
+        <td>{{ patient.telephone | telephone }}</td>
+        <td>
+          <button (click)="modifier(patient)">Modifier</button>
+          <button (click)="supprimer(patient.id!)">Supprimer</button>
+        </td>
+      </tr>
+    }
+  </table>
+</div>

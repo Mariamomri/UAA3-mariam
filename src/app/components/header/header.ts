@@ -1,34 +1,37 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterLink, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs';
 import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-header',
   imports: [RouterLink],
   templateUrl: './header.html',
-  styleUrl: './header.css',
+  styleUrl: './header.css'
 })
 export class Header implements OnInit {
   private router = inject(Router);
   private authService = inject(AuthService);
-
-  estConnecte = false;
+  connecte = false;
+  role = '';
 
   ngOnInit() {
     this.verifierConnexion();
-    this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
-      this.verifierConnexion();
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.verifierConnexion();
+      }
     });
   }
 
   verifierConnexion() {
-    this.estConnecte = localStorage.getItem('role') !== null;
+    this.role = localStorage.getItem('role') ?? '';
+    this.connecte = this.role !== '';
   }
 
-  logout() {
+  deconnexion() {
     this.authService.logout();
-    this.estConnecte = false;
+    this.connecte = false;
+    this.role = '';
     this.router.navigate(['/login']);
   }
 }

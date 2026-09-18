@@ -1,1 +1,19 @@
-<p>dashboard-patient works!</p>
+<div class="dashboard-page">
+  <h1>Dashboard Patient</h1>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Heure</th>
+      <th>Médecin</th>
+      <th>État</th>
+    </tr>
+    @for (rdv of rendezvous; track rdv.id) {
+      <tr>
+        <td>{{ rdv.date + 'T' + rdv.heure | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ rdv.date + 'T' + rdv.heure | date: 'HH:mm' }}</td>
+        <td>{{ rdv.medecinNom }}</td>
+        <td>{{ rdv.etat }}</td>
+      </tr>
+    }
+  </table>
+</div>

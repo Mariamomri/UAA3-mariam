@@ -1,1 +1,19 @@
-<p>dashboard-admin works!</p>
+<div class="dashboard-page">
+  <h1>Dashboard Admin</h1>
+
+  <nav class="onglets">
+    <button (click)="changerOnglet('patients')">Patients</button>
+    <button (click)="changerOnglet('medecins')">Médecins</button>
+    <button (click)="changerOnglet('rendezvous')">Rendez-vous</button>
+  </nav>
+
+  @if (onglet() === 'patients') {
+    <app-gestion-patients></app-gestion-patients>
+  }
+  @if (onglet() === 'medecins') {
+    <app-gestion-medecins></app-gestion-medecins>
+  }
+  @if (onglet() === 'rendezvous') {
+    <app-liste-rendezvous></app-liste-rendezvous>
+  }
+</div>

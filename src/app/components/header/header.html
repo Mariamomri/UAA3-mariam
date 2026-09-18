@@ -1,14 +1,10 @@
-<header>
-  <a routerLink="/login" class="logo">
-    <span class="logo-mark"></span>
-    <span class="logo-text">Clinique<span class="logo-accent">Bru</span></span>
-  </a>
+<header class="header">
+  <h1>Clinique</h1>
   <nav>
-    @if (!estConnecte) {
+    @if (!connecte) {
       <a routerLink="/login">Login</a>
-    }
-    @if (estConnecte) {
-      <button (click)="logout()">Déconnexion</button>
+    } @else {
+      <button (click)="deconnexion()">Déconnexion</button>
     }
   </nav>
 </header>
