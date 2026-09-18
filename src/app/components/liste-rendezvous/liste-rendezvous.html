@@ -1,7 +1,7 @@
 <div class="gestion">
   <h2>Gestion des Rendez-vous</h2>
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-grid">
     <div>
       <label for="date">Date :</label>
       <input id="date" type="date" formControlName="date" />
@@ -30,35 +30,53 @@
     </div>
     <div>
       <label for="etat">État :</label>
-      <input id="etat" type="text" formControlName="etat" />
+      <select id="etat" formControlName="etat">
+        <option value="">-- Choisir --</option>
+        <option value="en attente">En attente</option>
+        <option value="confirmé">Confirmé</option>
+        <option value="annulé">Annulé</option>
+      </select>
     </div>
-    <button type="submit">{{ idEnModification ? 'Modifier' : 'Ajouter' }}</button>
-    @if (idEnModification) {
-      <button type="button" (click)="annuler()">Annuler</button>
-    }
+    <div class="form-actions">
+      <button type="submit">{{ idEnModification ? 'Modifier' : 'Ajouter' }}</button>
+      @if (idEnModification) {
+        <button type="button" (click)="annuler()">Annuler</button>
+      }
+    </div>
   </form>
 
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Heure</th>
-      <th>Patient</th>
-      <th>Médecin</th>
-      <th>État</th>
-      <th>Actions</th>
-    </tr>
-    @for (rdv of rendezvous(); track rdv.id) {
+  @if (rendezvous().length === 0) {
+    <p class="empty-state">Aucun rendez-vous pour le moment.</p>
+  } @else {
+    <table>
       <tr>
-        <td>{{ rdv.date + 'T' + rdv.heure | date: 'dd/MM/yyyy' }}</td>
-        <td>{{ rdv.date + 'T' + rdv.heure | date: 'HH:mm' }}</td>
-        <td>{{ rdv.patientNom }}</td>
-        <td>{{ rdv.medecinNom }}</td>
-        <td>{{ rdv.etat }}</td>
-        <td>
-          <button (click)="modifier(rdv)">Modifier</button>
-          <button (click)="supprimer(rdv.id!)">Supprimer</button>
-        </td>
+        <th>Date</th>
+        <th>Heure</th>
+        <th>Patient</th>
+        <th>Médecin</th>
+        <th>État</th>
+        <th>Actions</th>
       </tr>
-    }
-  </table>
+      @for (rdv of rendezvous(); track rdv.id; let i = $index) {
+        <tr [style.--i]="i">
+          <td>{{ rdv.date + 'T' + rdv.heure | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ rdv.date + 'T' + rdv.heure | date: 'HH:mm' }}</td>
+          <td>{{ rdv.patientNom }}</td>
+          <td>{{ rdv.medecinNom }}</td>
+          <td>
+            <span
+              class="badge"
+              [class.badge-confirme]="rdv.etat === 'confirmé'"
+              [class.badge-attente]="rdv.etat === 'en attente'"
+              [class.badge-annule]="rdv.etat === 'annulé'"
+            >{{ rdv.etat }}</span>
+          </td>
+          <td>
+            <button (click)="modifier(rdv)">Modifier</button>
+            <button (click)="supprimer(rdv.id!)">Supprimer</button>
+          </td>
+        </tr>
+      }
+    </table>
+  }
 </div>

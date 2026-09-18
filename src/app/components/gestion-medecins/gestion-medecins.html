@@ -1,14 +1,14 @@
 <div class="gestion">
   <h2>Gestion des Médecins</h2>
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-grid">
     <div>
       <label for="nom">Nom :</label>
-      <input id="nom" type="text" formControlName="nom" />
+      <input id="nom" type="text" formControlName="nom" placeholder="Dr. Nom Prénom" />
     </div>
     <div>
       <label for="email">Email :</label>
-      <input id="email" type="email" formControlName="email" />
+      <input id="email" type="email" formControlName="email" placeholder="email@exemple.be" />
     </div>
     <div>
       <label for="password">Mot de passe :</label>
@@ -16,37 +16,43 @@
     </div>
     <div>
       <label for="telephone">Téléphone :</label>
-      <input id="telephone" type="text" formControlName="telephone" />
+      <input id="telephone" type="text" formControlName="telephone" placeholder="0412345678" />
     </div>
     <div>
       <label for="specialite">Spécialité :</label>
-      <input id="specialite" type="text" formControlName="specialite" />
+      <input id="specialite" type="text" formControlName="specialite" placeholder="Cardiologie" />
     </div>
-    <button type="submit">{{ idEnModification ? 'Modifier' : 'Ajouter' }}</button>
-    @if (idEnModification) {
-      <button type="button" (click)="annuler()">Annuler</button>
-    }
+    <div class="form-actions">
+      <button type="submit">{{ idEnModification ? 'Modifier' : 'Ajouter' }}</button>
+      @if (idEnModification) {
+        <button type="button" (click)="annuler()">Annuler</button>
+      }
+    </div>
   </form>
 
-  <table>
-    <tr>
-      <th>Nom</th>
-      <th>Email</th>
-      <th>Téléphone</th>
-      <th>Spécialité</th>
-      <th>Actions</th>
-    </tr>
-    @for (medecin of medecins(); track medecin.id) {
+  @if (medecins().length === 0) {
+    <p class="empty-state">Aucun médecin pour le moment.</p>
+  } @else {
+    <table>
       <tr>
-        <td>{{ medecin.nom }}</td>
-        <td>{{ medecin.email }}</td>
-        <td>{{ medecin.telephone | telephone }}</td>
-        <td>{{ medecin.specialite }}</td>
-        <td>
-          <button (click)="modifier(medecin)">Modifier</button>
-          <button (click)="supprimer(medecin.id!)">Supprimer</button>
-        </td>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Spécialité</th>
+        <th>Actions</th>
       </tr>
-    }
-  </table>
+      @for (medecin of medecins(); track medecin.id; let i = $index) {
+        <tr [style.--i]="i">
+          <td>{{ medecin.nom }}</td>
+          <td>{{ medecin.email }}</td>
+          <td>{{ medecin.telephone | telephone }}</td>
+          <td><span class="badge">{{ medecin.specialite }}</span></td>
+          <td>
+            <button (click)="modifier(medecin)">Modifier</button>
+            <button (click)="supprimer(medecin.id!)">Supprimer</button>
+          </td>
+        </tr>
+      }
+    </table>
+  }
 </div>

@@ -1,14 +1,14 @@
 <div class="gestion">
   <h2>Gestion des Patients</h2>
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-grid">
     <div>
       <label for="nom">Nom :</label>
-      <input id="nom" type="text" formControlName="nom" />
+      <input id="nom" type="text" formControlName="nom" placeholder="Nom complet" />
     </div>
     <div>
       <label for="email">Email :</label>
-      <input id="email" type="email" formControlName="email" />
+      <input id="email" type="email" formControlName="email" placeholder="email@exemple.be" />
     </div>
     <div>
       <label for="password">Mot de passe :</label>
@@ -16,31 +16,37 @@
     </div>
     <div>
       <label for="telephone">Téléphone :</label>
-      <input id="telephone" type="text" formControlName="telephone" />
+      <input id="telephone" type="text" formControlName="telephone" placeholder="0412345678" />
     </div>
-    <button type="submit">{{ idEnModification ? 'Modifier' : 'Ajouter' }}</button>
-    @if (idEnModification) {
-      <button type="button" (click)="annuler()">Annuler</button>
-    }
+    <div class="form-actions">
+      <button type="submit">{{ idEnModification ? 'Modifier' : 'Ajouter' }}</button>
+      @if (idEnModification) {
+        <button type="button" (click)="annuler()">Annuler</button>
+      }
+    </div>
   </form>
 
-  <table>
-    <tr>
-      <th>Nom</th>
-      <th>Email</th>
-      <th>Téléphone</th>
-      <th>Actions</th>
-    </tr>
-    @for (patient of patients(); track patient.id) {
+  @if (patients().length === 0) {
+    <p class="empty-state">Aucun patient pour le moment.</p>
+  } @else {
+    <table>
       <tr>
-        <td>{{ patient.nom }}</td>
-        <td>{{ patient.email }}</td>
-        <td>{{ patient.telephone | telephone }}</td>
-        <td>
-          <button (click)="modifier(patient)">Modifier</button>
-          <button (click)="supprimer(patient.id!)">Supprimer</button>
-        </td>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Actions</th>
       </tr>
-    }
-  </table>
+      @for (patient of patients(); track patient.id; let i = $index) {
+        <tr [style.--i]="i">
+          <td>{{ patient.nom }}</td>
+          <td>{{ patient.email }}</td>
+          <td>{{ patient.telephone | telephone }}</td>
+          <td>
+            <button (click)="modifier(patient)">Modifier</button>
+            <button (click)="supprimer(patient.id!)">Supprimer</button>
+          </td>
+        </tr>
+      }
+    </table>
+  }
 </div>

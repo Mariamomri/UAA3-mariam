@@ -1,19 +1,36 @@
 <div class="dashboard-page">
-  <h1>Dashboard Médecin</h1>
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Heure</th>
-      <th>Patient</th>
-      <th>État</th>
-    </tr>
-    @for (rdv of rendezvous(); track rdv.id) {
-      <tr>
-        <td>{{ rdv.date + 'T' + rdv.heure | date: 'dd/MM/yyyy' }}</td>
-        <td>{{ rdv.date + 'T' + rdv.heure | date: 'HH:mm' }}</td>
-        <td>{{ rdv.patientNom }}</td>
-        <td>{{ rdv.etat }}</td>
-      </tr>
+  <div class="page-banner">
+    <h1>Dashboard Médecin</h1>
+    <p>Voici la liste de vos rendez-vous.</p>
+  </div>
+
+  <div class="gestion">
+    @if (rendezvous().length === 0) {
+      <p class="empty-state">Vous n'avez aucun rendez-vous pour le moment.</p>
+    } @else {
+      <table>
+        <tr>
+          <th>Date</th>
+          <th>Heure</th>
+          <th>Patient</th>
+          <th>État</th>
+        </tr>
+        @for (rdv of rendezvous(); track rdv.id; let i = $index) {
+          <tr [style.--i]="i">
+            <td>{{ rdv.date + 'T' + rdv.heure | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ rdv.date + 'T' + rdv.heure | date: 'HH:mm' }}</td>
+            <td>{{ rdv.patientNom }}</td>
+            <td>
+              <span
+                class="badge"
+                [class.badge-confirme]="rdv.etat === 'confirmé'"
+                [class.badge-attente]="rdv.etat === 'en attente'"
+                [class.badge-annule]="rdv.etat === 'annulé'"
+              >{{ rdv.etat }}</span>
+            </td>
+          </tr>
+        }
+      </table>
     }
-  </table>
+  </div>
 </div>

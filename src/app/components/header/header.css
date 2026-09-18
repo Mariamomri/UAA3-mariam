@@ -1,0 +1,73 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 32px;
+  background-color: var(--color-navy);
+  box-shadow: var(--shadow-md);
+  animation: fadeIn var(--transition-base) both;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: transform var(--transition-fast);
+}
+
+.brand:hover {
+  transform: translateY(-1px);
+}
+
+.brand-logo {
+  height: 46px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(122, 226, 207, 0.25));
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-link {
+  color: var(--color-cream);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background-color: var(--color-teal);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.nav-link:hover {
+  background-color: var(--color-teal-light);
+  transform: translateY(-1px);
+}
+
+.btn-deconnexion {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--color-cream);
+  border: 1.5px solid rgba(245, 238, 221, 0.35);
+  border-radius: 999px;
+  padding: 8px 18px;
+  box-shadow: none;
+  margin: 0;
+}
+
+.btn-deconnexion:hover {
+  background-color: rgba(245, 238, 221, 0.12);
+  border-color: var(--color-mint);
+  color: var(--color-mint);
+  transform: translateY(-1px);
+  box-shadow: none;
+}

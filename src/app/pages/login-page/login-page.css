@@ -1,0 +1,68 @@
+.login-page {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(122, 226, 207, 0.35) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(7, 122, 125, 0.25) 0%, transparent 45%),
+    var(--color-navy);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  animation: fadeInUp var(--transition-base) both;
+}
+
+.login-logo {
+  width: 180px;
+  max-width: 70%;
+  height: auto;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 6px 16px rgba(7, 122, 125, 0.25));
+}
+
+.login-card h1 {
+  margin: 0 0 4px;
+  font-size: 1.6rem;
+}
+
+.subtitle {
+  margin: 0 0 24px;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.login-card form {
+  text-align: left;
+}
+
+.login-card input {
+  max-width: 100%;
+}
+
+.btn-submit {
+  width: 100%;
+  margin: 8px 0 0;
+  padding: 12px;
+  font-size: 1rem;
+}
+
+.erreur {
+  color: var(--color-danger-dark);
+  background-color: rgba(209, 73, 91, 0.1);
+  border: 1px solid rgba(209, 73, 91, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: -4px 0 14px;
+  animation: fadeIn var(--transition-fast) both;
+}

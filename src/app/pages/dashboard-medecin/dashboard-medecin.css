@@ -1,0 +1,27 @@
+.dashboard-page {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+  animation: fadeInUp var(--transition-base) both;
+}
+
+.page-banner {
+  margin-bottom: 24px;
+}
+
+.page-banner h1 {
+  margin: 0 0 6px;
+  font-size: 1.9rem;
+}
+
+.page-banner p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.gestion {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+}

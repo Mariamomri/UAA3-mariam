@@ -1,0 +1,33 @@
+.gestion {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  animation: fadeInUp var(--transition-base) both;
+}
+
+.gestion h2 {
+  margin: 0 0 18px;
+  font-size: 1.3rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0 20px;
+  padding: 20px;
+  margin-bottom: 24px;
+  background-color: var(--color-cream);
+  border-radius: var(--radius-sm);
+}
+
+.form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
+
+table {
+  animation: fadeIn var(--transition-base) both;
+}

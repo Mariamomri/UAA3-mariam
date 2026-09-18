@@ -1,10 +1,31 @@
 <div class="dashboard-page">
-  <h1>Dashboard Admin</h1>
+  <div class="page-banner">
+    <h1>Dashboard Admin</h1>
+    <p>Gérez les patients, les médecins et les rendez-vous de la clinique.</p>
+  </div>
 
   <nav class="onglets">
-    <button (click)="changerOnglet('patients')">Patients</button>
-    <button (click)="changerOnglet('medecins')">Médecins</button>
-    <button (click)="changerOnglet('rendezvous')">Rendez-vous</button>
+    <button
+      class="onglet"
+      [class.actif]="onglet() === 'patients'"
+      (click)="changerOnglet('patients')"
+    >
+      Patients
+    </button>
+    <button
+      class="onglet"
+      [class.actif]="onglet() === 'medecins'"
+      (click)="changerOnglet('medecins')"
+    >
+      Médecins
+    </button>
+    <button
+      class="onglet"
+      [class.actif]="onglet() === 'rendezvous'"
+      (click)="changerOnglet('rendezvous')"
+    >
+      Rendez-vous
+    </button>
   </nav>
 
   @if (onglet() === 'patients') {
