@@ -31,3 +31,14 @@
 table {
   animation: fadeIn var(--transition-base) both;
 }
+
+@media (max-width: 600px) {
+  .gestion {
+    padding: 16px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+}

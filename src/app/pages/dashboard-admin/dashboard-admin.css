@@ -21,12 +21,14 @@
 
 .onglets {
   display: inline-flex;
+  flex-wrap: wrap;
   gap: 4px;
   padding: 6px;
   margin-bottom: 24px;
   background-color: var(--color-white);
   border-radius: 999px;
   box-shadow: var(--shadow-sm);
+  max-width: 100%;
 }
 
 .onglet {
@@ -55,4 +57,19 @@
 .onglet.actif:hover {
   background-color: var(--color-teal);
   color: var(--color-white);
+}
+
+@media (max-width: 600px) {
+  .dashboard-page {
+    padding: 24px 16px 40px;
+  }
+
+  .onglets {
+    border-radius: var(--radius-md);
+  }
+
+  .onglet {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
 }

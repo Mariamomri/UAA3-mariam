@@ -33,6 +33,7 @@
   @if (medecins().length === 0) {
     <p class="empty-state">Aucun médecin pour le moment.</p>
   } @else {
+    <div class="table-wrap">
     <table>
       <tr>
         <th>Nom</th>
@@ -54,5 +55,6 @@
         </tr>
       }
     </table>
+    </div>
   }
 </div>

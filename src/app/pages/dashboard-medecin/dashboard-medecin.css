@@ -25,3 +25,13 @@
   padding: 28px;
   box-shadow: var(--shadow-sm);
 }
+
+@media (max-width: 600px) {
+  .dashboard-page {
+    padding: 24px 16px 40px;
+  }
+
+  .gestion {
+    padding: 16px;
+  }
+}
