@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterLink, NavigationEnd } from '@angular/router';
 import { AuthService } from '../../services/auth-service';
 
@@ -11,8 +11,11 @@ import { AuthService } from '../../services/auth-service';
 export class Header implements OnInit {
   private router = inject(Router);
   private authService = inject(AuthService);
-  connecte = false;
-  role = '';
+  // signal() au lieu d'une simple propriété : le projet n'utilise pas zone.js,
+  // donc sans signal le header ne se met pas forcément à jour quand la
+  // navigation (router.events, asynchrone) change l'état de connexion.
+  connecte = signal(false);
+  role = signal('');
 
   ngOnInit() {
     this.verifierConnexion();
@@ -24,14 +27,15 @@ export class Header implements OnInit {
   }
 
   verifierConnexion() {
-    this.role = localStorage.getItem('role') ?? '';
-    this.connecte = this.role !== '';
+    const role = localStorage.getItem('role') ?? '';
+    this.role.set(role);
+    this.connecte.set(role !== '');
   }
 
   deconnexion() {
     this.authService.logout();
-    this.connecte = false;
-    this.role = '';
+    this.connecte.set(false);
+    this.role.set('');
     this.router.navigate(['/login']);
   }
 }

@@ -9,8 +9,8 @@
       <label for="password">Mot de passe :</label>
       <input id="password" type="password" formControlName="password" />
     </div>
-    @if (erreur) {
-      <p class="erreur">{{ erreur }}</p>
+    @if (erreur()) {
+      <p class="erreur">{{ erreur() }}</p>
     }
     <button type="submit">Se connecter</button>
   </form>

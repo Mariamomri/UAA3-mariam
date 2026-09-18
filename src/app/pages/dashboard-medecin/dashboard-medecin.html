@@ -7,7 +7,7 @@
       <th>Patient</th>
       <th>État</th>
     </tr>
-    @for (rdv of rendezvous; track rdv.id) {
+    @for (rdv of rendezvous(); track rdv.id) {
       <tr>
         <td>{{ rdv.date + 'T' + rdv.heure | date: 'dd/MM/yyyy' }}</td>
         <td>{{ rdv.date + 'T' + rdv.heure | date: 'HH:mm' }}</td>

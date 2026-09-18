@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth-service';
@@ -13,7 +13,10 @@ export class LoginPage {
   private authService = inject(AuthService);
   private router = inject(Router);
   private fb = inject(FormBuilder);
-  erreur = '';
+  // signal() au lieu d'une simple propriété : le projet n'utilise pas zone.js,
+  // donc sans signal le message d'erreur ne s'affiche pas quand il est défini
+  // depuis le subscribe (asynchrone) des appels de connexion.
+  erreur = signal('');
 
   form: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -22,11 +25,11 @@ export class LoginPage {
 
   onSubmit() {
     if (this.form.invalid) {
-      this.erreur = 'Veuillez remplir correctement le formulaire.';
+      this.erreur.set('Veuillez remplir correctement le formulaire.');
       return;
     }
     const { email, password } = this.form.value;
-    this.erreur = '';
+    this.erreur.set('');
     this.authService.loginAdmin(email, password).subscribe((admins) => {
       if (admins.length > 0) {
         this.connecter(admins[0].id!, 'admin');
@@ -42,7 +45,7 @@ export class LoginPage {
             this.connecter(patients[0].id!, 'patient');
             return;
           }
-          this.erreur = 'Email ou mot de passe incorrect.';
+          this.erreur.set('Email ou mot de passe incorrect.');
         });
       });
     });

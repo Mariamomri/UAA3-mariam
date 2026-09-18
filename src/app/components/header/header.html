@@ -1,7 +1,7 @@
 <header class="header">
   <h1>Clinique</h1>
   <nav>
-    @if (!connecte) {
+    @if (!connecte()) {
       <a routerLink="/login">Login</a>
     } @else {
       <button (click)="deconnexion()">Déconnexion</button>
