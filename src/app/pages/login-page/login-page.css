@@ -1,17 +1,87 @@
 .login-page {
+  position: relative;
   min-height: calc(100vh - 140px);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
+  overflow: hidden;
   background:
-    radial-gradient(circle at 15% 20%, rgba(122, 226, 207, 0.35) 0%, transparent 45%),
-    radial-gradient(circle at 85% 80%, rgba(7, 122, 125, 0.25) 0%, transparent 45%),
-    var(--color-navy);
+    radial-gradient(circle at 12% 15%, rgba(122, 226, 207, 0.3) 0%, transparent 45%),
+    radial-gradient(circle at 88% 85%, rgba(7, 122, 125, 0.16) 0%, transparent 45%),
+    var(--color-cream);
+}
+
+/* Points flottants animés en arrière-plan */
+.dots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.55;
+  animation: float 6s ease-in-out infinite;
+}
+
+.dot-1 { width: 46px; height: 46px; background: var(--color-mint); top: 10%; left: 10%; }
+.dot-2 { width: 22px; height: 22px; background: var(--color-teal); top: 18%; right: 14%; animation-delay: 1s; }
+.dot-3 { width: 30px; height: 30px; background: var(--color-navy-light); bottom: 16%; left: 16%; animation-delay: 2s; }
+.dot-4 { width: 16px; height: 16px; background: var(--color-teal-light); top: 8%; right: 32%; animation-delay: 1.5s; }
+.dot-5 { width: 20px; height: 20px; background: var(--color-mint-dark); bottom: 22%; right: 10%; animation-delay: 0.5s; }
+.dot-6 { width: 14px; height: 14px; background: var(--color-teal); top: 45%; left: 5%; animation-delay: 2.5s; }
+.dot-7 { width: 26px; height: 26px; background: var(--color-mint); bottom: 8%; right: 34%; animation-delay: 3s; }
+.dot-8 { width: 18px; height: 18px; background: var(--color-navy-light); top: 40%; right: 5%; animation-delay: 1.8s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+.login-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 780px;
+}
+
+.login-illustration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1 1 280px;
+  max-width: 320px;
+  animation: fadeInUp var(--transition-base) both;
+}
+
+.login-gif {
+  width: 260px;
+  max-width: 100%;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-md);
+  padding: 8px;
+  animation: float 5s ease-in-out infinite;
+}
+
+.login-tagline {
+  margin: 16px 0 0;
+  font-weight: 600;
+  color: var(--color-navy);
+  font-size: 1.05rem;
 }
 
 .login-card {
-  width: 100%;
+  flex: 1 1 340px;
   max-width: 380px;
   background-color: var(--color-white);
   border-radius: var(--radius-lg);
@@ -19,6 +89,7 @@
   box-shadow: var(--shadow-lg);
   text-align: center;
   animation: fadeInUp var(--transition-base) both;
+  animation-delay: 0.1s;
 }
 
 .login-logo {

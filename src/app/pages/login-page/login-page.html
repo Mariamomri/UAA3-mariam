@@ -1,22 +1,35 @@
 <div class="login-page">
-  <div class="login-card">
-    <img src="img/logo.png" alt="CliniqueBru" class="login-logo" />
-    <h1>Connexion</h1>
-    <p class="subtitle">Accédez à votre espace Clinique</p>
+  <div class="dots" aria-hidden="true">
+    <span class="dot dot-1"></span>
+    <span class="dot dot-2"></span>
+    <span class="dot dot-3"></span>
+    <span class="dot dot-4"></span>
+    <span class="dot dot-5"></span>
+    <span class="dot dot-6"></span>
+    <span class="dot dot-7"></span>
+    <span class="dot dot-8"></span>
+  </div>
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div>
-        <label for="email">Email</label>
-        <input id="email" type="email" formControlName="email" placeholder="vous@clinique.be" />
-      </div>
-      <div>
-        <label for="password">Mot de passe</label>
-        <input id="password" type="password" formControlName="password" placeholder="••••••••" />
-      </div>
-      @if (erreur()) {
-        <p class="erreur">{{ erreur() }}</p>
-      }
-      <button type="submit" class="btn-submit">Se connecter</button>
-    </form>
+  <div class="login-wrapper">
+    <div class="login-card">
+      <img src="img/logo.png" alt="CliniqueBru" class="login-logo" />
+      <h1>Connexion</h1>
+      <p class="subtitle">Accédez à votre espace Clinique</p>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="email">Email</label>
+          <input id="email" type="email" formControlName="email" placeholder="vous@clinique.be" />
+        </div>
+        <div>
+          <label for="password">Mot de passe</label>
+          <input id="password" type="password" formControlName="password" placeholder="******" />
+        </div>
+        @if (erreur()) {
+          <p class="erreur">{{ erreur() }}</p>
+        }
+        <button type="submit" class="btn-submit">Se connecter</button>
+      </form>
+    </div>
   </div>
 </div>

@@ -1,73 +1,71 @@
 {
   "admins": [
-    { 
-      "id": "1", 
-      "nom": "Mariam Omri", 
-      "email": "mariam.omri@clinique.be", 
-      "password": "admin123" 
+    {
+      "id": "1",
+      "nom": "Mariam Omri",
+      "email": "mariam.omri@clinique.be",
+      "password": "admin123"
     }
   ],
-
   "medecins": [
-    { 
-      "id": "1", 
-      "nom": "Dr. Marco Rossi", 
-      "email": "marco.rossi@clinique.be", 
-      "password": "medecin123", 
-      "telephone": "024453908", 
-      "specialite": "Cardiologie" 
+    {
+      "id": "1",
+      "nom": "Dr. Marco Rossi",
+      "email": "marco.rossi@clinique.be",
+      "password": "medecin123",
+      "telephone": "024453908",
+      "specialite": "Cardiologie"
     },
-    { 
-      "id": "2", 
-      "nom": "Dr. Emma Dubois", 
-      "email": "emma.dubois@clinique.be", 
-      "password": "medecin123", 
-      "telephone": "0412345678", 
-      "specialite": "Dermatologie" 
+    {
+      "id": "2",
+      "nom": "Dr. Emma Dubois",
+      "email": "emma.dubois@clinique.be",
+      "password": "medecin123",
+      "telephone": "0412345678",
+      "specialite": "Dermatologie"
     }
   ],
-
   "patients": [
-    { 
-      "id": "1", 
-      "nom": "Ilias Amrani", 
-      "email": "ilias.amrani@gmail.com", 
-      "password": "patient123", 
-      "telephone": "024453908" 
+    {
+      "id": "1",
+      "nom": "Ilias Amrani",
+      "email": "ilias.amrani@gmail.com",
+      "password": "patient123",
+      "telephone": "024453908"
     },
-    { 
-      "id": "2", 
-      "nom": "Sara Petit", 
-      "email": "sara.petit@gmail.com", 
-      "password": "patient123", 
-      "telephone": "0412345678" 
+    {
+      "id": "2",
+      "nom": "Sara Petit",
+      "email": "sara.petit@gmail.com",
+      "password": "patient123",
+      "telephone": "0412345678"
     }
   ],
-
   "rendezvous": [
-    { 
-      "id": "1", 
-      "date": "2026-09-20", 
-      "heure": "09:00", 
-      "patientId": "1", 
-      "medecinId": "1", 
-      "etat": "confirmé" 
+    {
+      "id": "1",
+      "date": "2026-09-20",
+      "heure": "09:00",
+      "patientId": "1",
+      "medecinId": "1",
+      "etat": "confirmé"
     },
-    { 
-      "id": "2", 
-      "date": "2026-09-21", 
-      "heure": "14:30", 
-      "patientId": "2", 
-      "medecinId": "2", 
-      "etat": "en attente" 
+    {
+      "id": "2",
+      "date": "2026-09-21",
+      "heure": "14:30",
+      "patientId": "2",
+      "medecinId": "2",
+      "etat": "en attente"
     },
-    { 
-      "id": "3", 
-      "date": "2026-09-22", 
-      "heure": "11:15", 
-      "patientId": "1", 
-      "medecinId": "2", 
-      "etat": "annulé" 
+    {
+      "id": "3",
+      "date": "2026-09-22",
+      "heure": "11:15",
+      "patientId": "1",
+      "medecinId": "2",
+      "etat": "annulé"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
