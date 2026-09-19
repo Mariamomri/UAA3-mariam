@@ -118,20 +118,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 1 480px;
+  flex: 0 0 480px;
   order: 2;
 }
 
 .post-wrapper {
   order: 1;
-  flex: 0 1 auto;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
 }
 
 .post2-wrapper {
   order: 3;
-  flex: 0 1 auto;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
 }
@@ -204,7 +204,7 @@
   border-radius: 5px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1500px) {
   .login-page {
     flex-direction: column;
     padding: 40px 20px;
