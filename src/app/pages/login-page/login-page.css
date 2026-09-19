@@ -5,7 +5,11 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 100px;
+  /* Gap plus petit en mode "ligne" (desktop) : avec 100px ça ne rentrait
+     plus dès qu'on descendait un peu en dessous d'un très grand écran.
+     Le gap de 100px que tu voulais est repris uniquement en colonne
+     (voir le media query plus bas), où il n'y a pas ce problème de place. */
+  gap: 32px;
   padding: 80px 40px;
   overflow: hidden;
   background:
@@ -194,21 +198,27 @@
 }
 
 .post {
-  width: clamp(180px, 24vw, 400px);
+  /* vw plus petit + plafond plus bas : à largeur d'écran "normale"
+     (ordinateur portable, ~1000-1400px réels) les post-it restent assez
+     petits pour tenir à côté de la carte de connexion sans se faire
+     écraser */
+  width: clamp(140px, 15vw, 320px);
   rotate: -5deg;
 }
 
 .post2 {
-  width: clamp(180px, 24vw, 400px);
+  width: clamp(140px, 15vw, 320px);
   rotate: 5deg;
   border-radius: 5px;
 }
 
-@media (max-width: 1500px) {
+/* Seuil recalculé pour la nouvelle taille des post-it + gap de 32px :
+   ligne à partir d'environ 960px de largeur réelle, colonne en dessous */
+@media (max-width: 960px) {
   .login-page {
     flex-direction: column;
     padding: 40px 20px;
-    gap: 24px;
+    gap: 100px;
   }
 
   .post-wrapper {
@@ -233,6 +243,8 @@
 @media (max-width: 480px) {
   .login-page {
     padding: 24px 14px;
+    /* Sur petit mobile, 100px entre chaque carte prend trop de place */
+    gap: 40px;
   }
 
   .login-card {
