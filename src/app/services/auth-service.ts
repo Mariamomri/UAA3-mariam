@@ -3,13 +3,15 @@ import { inject, Injectable } from '@angular/core';
 import { Admin } from '../models/admin';
 import { Medecin } from '../models/medecin';
 import { Patient } from '../models/patient';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000';
+  // localhost:3000 en dev, my-json-server en production (voir environment.prod.ts)
+  private apiUrl = environment.apiUrl;
 
   loginAdmin(email: string, password: string) {
     return this.http.get<Admin[]>(

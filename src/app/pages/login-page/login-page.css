@@ -2,8 +2,10 @@
   position: relative;
   min-height: calc(100vh - 140px);
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  gap: 100px;
   padding: 80px 40px;
   overflow: hidden;
   background:
@@ -116,7 +118,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  flex: 0 1 480px;
+  order: 2;
+}
+
+.post-wrapper {
+  order: 1;
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+}
+
+.post2-wrapper {
+  order: 3;
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
 }
 
 .login-card {
@@ -177,16 +194,40 @@
 }
 
 .post {
-  width: 400px;
+  width: clamp(180px, 24vw, 400px);
   rotate: -5deg;
-  margin-left: 100px;
 }
 
 .post2 {
-  width: 400px;
+  width: clamp(180px, 24vw, 400px);
   rotate: 5deg;
-  margin-right: 100px;
   border-radius: 5px;
+}
+
+@media (max-width: 900px) {
+  .login-page {
+    flex-direction: column;
+    padding: 40px 20px;
+    gap: 24px;
+  }
+
+  .post-wrapper {
+    order: 3;
+  }
+
+  .login-wrapper {
+    order: 2;
+  }
+
+  .post2-wrapper {
+    order: 1;
+  }
+
+  .post,
+  .post2 {
+    width: clamp(200px, 55vw, 320px);
+    rotate: 0deg;
+  }
 }
 
 @media (max-width: 480px) {
@@ -207,18 +248,14 @@
     font-size: 1.35rem;
   }
 
-  /* On réduit le nombre de points visibles pour ne pas surcharger un petit écran */
   .dot-4,
   .dot-6,
   .dot-7 {
     display: none;
   }
 
-  .post {
-    display: none;
-  }
-
+  .post,
   .post2 {
-    display: none;
+    width: clamp(150px, 60vw, 260px);
   }
 }
