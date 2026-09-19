@@ -1,19 +1,70 @@
 {
-  "posts": [
+  "admins": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "id": "1",
+      "nom": "Mariam Omri",
+      "email": "mariam.omri@clinique.be",
+      "password": "admin123"
     }
   ],
-  "comments": [
+  "medecins": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": "1",
+      "nom": "Dr. Marco Rossi",
+      "email": "marco.rossi@clinique.be",
+      "password": "medecin123",
+      "telephone": "024453908",
+      "specialite": "Cardiologie"
+    },
+    {
+      "id": "2",
+      "nom": "Dr. Emma Dubois",
+      "email": "emma.dubois@clinique.be",
+      "password": "medecin123",
+      "telephone": "0412345678",
+      "specialite": "Dermatologie"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "patients": [
+    {
+      "id": "1",
+      "nom": "Ilias Amrani",
+      "email": "ilias.amrani@gmail.com",
+      "password": "patient123",
+      "telephone": "024453908"
+    },
+    {
+      "id": "2",
+      "nom": "Sara Petit",
+      "email": "sara.petit@gmail.com",
+      "password": "patient123",
+      "telephone": "0412345678"
+    }
+  ],
+  "rendezvous": [
+    {
+      "id": "1",
+      "date": "2026-09-20",
+      "heure": "09:00",
+      "patientId": "1",
+      "medecinId": "1",
+      "etat": "confirmé"
+    },
+    {
+      "id": "2",
+      "date": "2026-09-21",
+      "heure": "14:30",
+      "patientId": "2",
+      "medecinId": "2",
+      "etat": "en attente"
+    },
+    {
+      "id": "3",
+      "date": "2026-09-22",
+      "heure": "11:15",
+      "patientId": "1",
+      "medecinId": "2",
+      "etat": "annulé"
+    }
+  ]
 }

@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 })
 export class AuthService {
   private http = inject(HttpClient);
-
+  // localhost:3000 en dev, my-json-server en production (voir environment.prod.ts)
   private apiUrl = environment.apiUrl;
 
   loginAdmin(email: string, password: string) {
