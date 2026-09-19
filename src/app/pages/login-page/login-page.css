@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 80px 40px;
   overflow: hidden;
   background:
     radial-gradient(circle at 12% 15%, rgba(122, 226, 207, 0.3) 0%, transparent 45%),
@@ -27,18 +27,87 @@
   animation: float 6s ease-in-out infinite;
 }
 
-.dot-1 { width: 46px; height: 46px; background: var(--color-mint); top: 10%; left: 10%; }
-.dot-2 { width: 22px; height: 22px; background: var(--color-teal); top: 18%; right: 14%; animation-delay: 1s; }
-.dot-3 { width: 30px; height: 30px; background: var(--color-navy-light); bottom: 16%; left: 16%; animation-delay: 2s; }
-.dot-4 { width: 16px; height: 16px; background: var(--color-teal-light); top: 8%; right: 32%; animation-delay: 1.5s; }
-.dot-5 { width: 20px; height: 20px; background: var(--color-mint-dark); bottom: 22%; right: 10%; animation-delay: 0.5s; }
-.dot-6 { width: 14px; height: 14px; background: var(--color-teal); top: 45%; left: 5%; animation-delay: 2.5s; }
-.dot-7 { width: 26px; height: 26px; background: var(--color-mint); bottom: 8%; right: 34%; animation-delay: 3s; }
-.dot-8 { width: 18px; height: 18px; background: var(--color-navy-light); top: 40%; right: 5%; animation-delay: 1.8s; }
+.dot-1 {
+  width: 46px;
+  height: 46px;
+  background: var(--color-mint);
+  top: 10%;
+  left: 10%;
+}
+
+.dot-2 {
+  width: 22px;
+  height: 22px;
+  background: var(--color-teal);
+  top: 18%;
+  right: 14%;
+  animation-delay: 1s;
+}
+
+.dot-3 {
+  width: 30px;
+  height: 30px;
+  background: var(--color-navy-light);
+  bottom: 16%;
+  left: 16%;
+  animation-delay: 2s;
+}
+
+.dot-4 {
+  width: 16px;
+  height: 16px;
+  background: var(--color-teal-light);
+  top: 8%;
+  right: 32%;
+  animation-delay: 1.5s;
+}
+
+.dot-5 {
+  width: 20px;
+  height: 20px;
+  background: var(--color-mint-dark);
+  bottom: 22%;
+  right: 10%;
+  animation-delay: 0.5s;
+}
+
+.dot-6 {
+  width: 14px;
+  height: 14px;
+  background: var(--color-teal);
+  top: 45%;
+  left: 5%;
+  animation-delay: 2.5s;
+}
+
+.dot-7 {
+  width: 26px;
+  height: 26px;
+  background: var(--color-mint);
+  bottom: 8%;
+  right: 34%;
+  animation-delay: 3s;
+}
+
+.dot-8 {
+  width: 18px;
+  height: 18px;
+  background: var(--color-navy-light);
+  top: 40%;
+  right: 5%;
+  animation-delay: 1.8s;
+}
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-16px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-16px);
+  }
 }
 
 .login-wrapper {
@@ -107,6 +176,19 @@
   animation: fadeIn var(--transition-fast) both;
 }
 
+.post {
+  width: 400px;
+  rotate: -5deg;
+  margin-left: 100px;
+}
+
+.post2 {
+  width: 400px;
+  rotate: 5deg;
+  margin-right: 100px;
+  border-radius: 5px;
+}
+
 @media (max-width: 480px) {
   .login-page {
     padding: 24px 14px;
@@ -126,7 +208,17 @@
   }
 
   /* On réduit le nombre de points visibles pour ne pas surcharger un petit écran */
-  .dot-4, .dot-6, .dot-7 {
+  .dot-4,
+  .dot-6,
+  .dot-7 {
+    display: none;
+  }
+
+  .post {
+    display: none;
+  }
+
+  .post2 {
     display: none;
   }
 }
