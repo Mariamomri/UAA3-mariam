@@ -9,7 +9,7 @@
      plus dès qu'on descendait un peu en dessous d'un très grand écran.
      Le gap de 100px que tu voulais est repris uniquement en colonne
      (voir le media query plus bas), où il n'y a pas ce problème de place. */
-  gap: 24px;
+  gap: 64px;
   padding: 60px 24px;
   overflow: hidden;
   background:
@@ -211,10 +211,9 @@
   border-radius: 5px;
 }
 
-/* Seuil recalculé avec les nouvelles valeurs (carte 440px, gap 24px,
-   padding 24px, post-it à 24vw) : ligne à partir d'environ 1050px de
-   largeur réelle, colonne en dessous */
-@media (max-width: 1050px) {
+/* Seuil recalculé avec le gap remonté à 64px : ligne à partir d'environ
+   1200px de largeur réelle, colonne en dessous */
+@media (max-width: 1200px) {
   .login-page {
     flex-direction: column;
     padding: 40px 20px;
