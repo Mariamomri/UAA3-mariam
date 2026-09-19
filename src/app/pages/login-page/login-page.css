@@ -9,8 +9,8 @@
      plus dès qu'on descendait un peu en dessous d'un très grand écran.
      Le gap de 100px que tu voulais est repris uniquement en colonne
      (voir le media query plus bas), où il n'y a pas ce problème de place. */
-  gap: 32px;
-  padding: 80px 40px;
+  gap: 24px;
+  padding: 60px 24px;
   overflow: hidden;
   background:
     radial-gradient(circle at 12% 15%, rgba(122, 226, 207, 0.3) 0%, transparent 45%),
@@ -122,7 +122,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 480px;
+  /* légèrement réduit (480 → 440) pour laisser plus de place aux post-it */
+  flex: 0 0 440px;
   order: 2;
 }
 
@@ -198,23 +199,22 @@
 }
 
 .post {
-  /* vw plus petit + plafond plus bas : à largeur d'écran "normale"
-     (ordinateur portable, ~1000-1400px réels) les post-it restent assez
-     petits pour tenir à côté de la carte de connexion sans se faire
-     écraser */
-  width: clamp(140px, 15vw, 320px);
+  /* Encore un peu plus grands : la carte de connexion et les marges ont
+     été réduites pour laisser cette place */
+  width: clamp(180px, 24vw, 460px);
   rotate: -5deg;
 }
 
 .post2 {
-  width: clamp(140px, 15vw, 320px);
+  width: clamp(180px, 24vw, 460px);
   rotate: 5deg;
   border-radius: 5px;
 }
 
-/* Seuil recalculé pour la nouvelle taille des post-it + gap de 32px :
-   ligne à partir d'environ 960px de largeur réelle, colonne en dessous */
-@media (max-width: 960px) {
+/* Seuil recalculé avec les nouvelles valeurs (carte 440px, gap 24px,
+   padding 24px, post-it à 24vw) : ligne à partir d'environ 1050px de
+   largeur réelle, colonne en dessous */
+@media (max-width: 1050px) {
   .login-page {
     flex-direction: column;
     padding: 40px 20px;
