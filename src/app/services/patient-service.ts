@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class PatientService {
   private http = inject(HttpClient);
-  private apiUrl = `${environment.apiUrl}/patients`;
+  private apiUrl = 'htpps://my-json-server.typicode.com/mariamomri/database-json-angular-CliniqueBru/patients';
 
   getAll(): Observable<Patient[]> {
     return this.http.get<Patient[]>(this.apiUrl);

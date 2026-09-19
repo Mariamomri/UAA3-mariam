@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 export class AuthService {
   private http = inject(HttpClient);
   // localhost:3000 en dev, my-json-server en production (voir environment.prod.ts)
-  private apiUrl = environment.apiUrl;
+  private apiUrl = "htpps://my-json-server.typicode.com/mariamomri/database-json-angular-CliniqueBru";
 
   loginAdmin(email: string, password: string) {
     return this.http.get<Admin[]>(
